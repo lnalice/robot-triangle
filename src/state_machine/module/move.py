@@ -9,7 +9,7 @@ import math
 
 from helper.moveFlow import getMoveFlow, getLinFlowOfPolygon, getSceneDataFlow, getSceneDataByRobotID
 
-take_cnt:dict= {"tb3_0": 1, "tb3_1": 1, "tb3_2": 1}
+take_cnt:dict= {"tb3_0": 3, "tb3_1": 3, "tb3_2": 3}
 
 class MoveRequest(smach.State):
     def __init__(self):
@@ -61,8 +61,8 @@ class OnTheMove(smach_ros.MonitorState):
 
         if arrived_robot in user_data.robot_list:
             rospy.loginfo(f"robot %s arrived", result[0])
-            take_cnt[arrived_robot] += 1
-            if take_cnt <= 3:
+            take_cnt[arrived_robot] -= 1
+            if take_cnt > 0:
                 goal_data = getSceneDataByRobotID("take_" + take_cnt[arrived_robot], arrived_robot)
                 self.move_pub.publish(goal_data)
                 rospy.loginfo("[MoveTogether] I would publish data 'take_%s' for %s", str(take_cnt), arrived_robot)

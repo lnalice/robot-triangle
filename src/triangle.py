@@ -29,10 +29,11 @@ class Triangle:
         self.sm.userdata.robot_list = ['tb3_0', 'tb3_1', 'tb3_2']
 
         with self.sm:
-            smach.StateMachine.add('RANDOM_MOVE', MoveTogetherSM(),
-                                   transitions={'complete': 'CTRL_MODULE'}),
             smach.StateMachine.add('CTRL_MODULE', CtrlModuleSM(direction="forward"),
-                                   transitions={'complete': 'end'})
+                                   transitions={'complete': 'RANDOM_MOVE'})
+            smach.StateMachine.add('RANDOM_MOVE', MoveTogetherSM(),
+                                   transitions={'complete': 'end'}),
+            
 
 if __name__ == "__main__":
 
