@@ -1,19 +1,19 @@
 {
     "tb3_0": {
-        "seconds" : 15, 
-        "lin_vel" : {"x":  0.06, "y": 0.0, "z": 0.0},
+        "seconds" : 7,
+        "lin_vel" : {"x":  0.15, "y": 0.0, "z": 0.0},
         "ang_vel" : {"x":  0.0, "y": 0.0, "z": 0.0},
         "move_delay": 0
     },
     "tb3_1": {
-        "seconds" : 15, 
-        "lin_vel" : {"x":  0.06, "y": 0.0, "z": 0.0},
+        "seconds" : 7,
+        "lin_vel" : {"x":  0.15, "y": 0.0, "z": 0.0},
         "ang_vel" : {"x":  0.0, "y": 0.0, "z": 0.0},
         "move_delay": 0
     },
     "tb3_2": {
-        "seconds" : 15, 
-        "lin_vel" : {"x":  0.06, "y": 0.0, "z": 0.0},
+        "seconds" : 7,
+        "lin_vel" : {"x":  0.15, "y": 0.0, "z": 0.0},
         "ang_vel" : {"x":  0.0, "y": 0.0, "z": 0.0},
         "move_delay": 0
     }
