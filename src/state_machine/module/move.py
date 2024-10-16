@@ -26,18 +26,19 @@ class MoveRequest(smach.State):
         centerAngZ = user_data.centerAngZ
         lin_seconds = user_data.lin_seconds
         ang_seconds = user_data.ang_seconds
+        request_robot_list = ['tb3_0', 'tb3_1', 'tb3_2']
 
         if self.vel == "lin" and self.goal == "polygon": # 다각형 직진
-            move_flow = getLinFlowOfPolygon(['tb3_0', 'tb3_1', 'tb3_2'])
+            move_flow = getLinFlowOfPolygon(request_robot_list)
             
         elif self.vel == "ang" and self.goal == "polygon": # 다각형 회전
-            move_flow = getMoveFlow(0, rotateAngZ, ang_seconds, ['tb3_0', 'tb3_1', 'tb3_2'])
+            move_flow = getMoveFlow(0, rotateAngZ, ang_seconds, request_robot_list)
 
         elif self.vel == "lin" and self.goal == "center":
-            move_flow = getMoveFlow(linX / math.sqrt(3), 0, lin_seconds, ['tb3_0', 'tb3_1', 'tb3_2'])
+            move_flow = getMoveFlow(linX / math.sqrt(3), 0, lin_seconds, request_robot_list)
         
         elif self.vel == "ang" and self.goal == "center": 
-            move_flow = getMoveFlow(0, centerAngZ / 2, ang_seconds, ['tb3_0', 'tb3_1', 'tb3_2'])
+            move_flow = getMoveFlow(0, centerAngZ / 2, ang_seconds, request_robot_list)
 
         user_data.robot_list = []
 
