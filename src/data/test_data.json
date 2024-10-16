@@ -1,0 +1,71 @@
+{
+    "take_1": [
+        {
+            "id" : "tb3_0",
+            "seconds" : 7,
+            "lin_vel" : {"x":  0.15, "y": 0.0, "z": 0.0},
+            "ang_vel" : {"x":  0.0, "y": 0.0, "z": 0.0},
+            "move_delay": 0
+        },
+        {
+            "id" : "tb3_1",
+            "seconds" : 10,
+            "lin_vel" : {"x":  0.15, "y": 0.0, "z": 0.0},
+            "ang_vel" : {"x":  0.0, "y": 0.0, "z": 0.04},
+            "move_delay": 0
+        },
+        {
+            "id" :"tb3_2",
+            "seconds" : 10,
+            "lin_vel" : {"x":  0.15, "y": 0.0, "z": 0.0},
+            "ang_vel" : {"x":  0.0, "y": 0.0, "z": -0.03},
+            "move_delay": 0
+        }
+    ],
+    "take_2": [
+        {
+            "id" : "tb3_0",
+            "seconds" : 7,
+            "lin_vel" : {"x":  -0.15, "y": 0.0, "z": 0.0},
+            "ang_vel" : {"x":  0.0, "y": 0.0, "z": 0.07},
+            "move_delay": 0
+        },
+        {
+            "id" : "tb3_1",
+            "seconds" : 7,
+            "lin_vel" : {"x":  0.13, "y": 0.0, "z": 0.0},
+            "ang_vel" : {"x":  0.0, "y": 0.0, "z": -0.1},
+            "move_delay": 0
+        },
+        {
+            "id" :"tb3_2",
+            "seconds" : 13,
+            "lin_vel" : {"x":  -0.15, "y": 0.0, "z": 0.0},
+            "ang_vel" : {"x":  0.0, "y": 0.0, "z": 0.03},
+            "move_delay": 0
+        }
+    ],
+    "take_3": [
+        {
+            "id" : "tb3_0",
+            "seconds" : 7,
+            "lin_vel" : {"x":  0.15, "y": 0.0, "z": 0.0},
+            "ang_vel" : {"x":  0.0, "y": 0.0, "z": -0.05},
+            "move_delay": 0
+        },
+        {
+            "id" : "tb3_1",
+            "seconds" : 4,
+            "lin_vel" : {"x":  0.15, "y": 0.0, "z": 0.0},
+            "ang_vel" : {"x":  0.0, "y": 0.0, "z": 0.0},
+            "move_delay": 0
+        },
+        {
+            "id" :"tb3_2",
+            "seconds" : 7,
+            "lin_vel" : {"x":  0.15, "y": 0.0, "z": 0.0},
+            "ang_vel" : {"x":  0.0, "y": 0.0, "z": 0.05},
+            "move_delay": 0
+        }
+    ]
+}
