@@ -30,7 +30,6 @@ class ControlRequest(smach.State):
         if len(ctrl_flow) == 0:
             return 'none'
         
-        ################################################여기!#############
         while ctrl_flow:
             rospy.sleep(0.3)
 

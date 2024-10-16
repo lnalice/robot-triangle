@@ -15,12 +15,12 @@ LIN_VEL = 0.15 # 직진 속도
 LIN_VEL_CENTER = 0.15 / math.sqrt(3) # 중심으로 이동할 때의 속도
 
 NUM_OF_SIDE = 3 # 변의 개수
-DEGREE = 180 * (NUM_OF_SIDE -2) / NUM_OF_SIDE # 다각형의 각도: 180×(n-2)÷n
-DEGREE_ROTATE = 180 - DEGREE # 로봇 회전 각도
-DEGREE_TO_CENTER = DEGREE / 2 # 중심으로 이동시 로봇 회전 각도
+DEGREE = 180 * (NUM_OF_SIDE - 2) / NUM_OF_SIDE # 다각형의 각도: 180×(n-2)÷n (60)
+DEGREE_ROTATE = 180 - DEGREE # 로봇 회전 각도 (120)
+DEGREE_TO_CENTER = DEGREE / 2 # 중심으로 이동 시 로봇 회전 각도 (30)
 
 ANG_SECONDS = 5
-ANG_VEL_ROTATE = 2 * math.pi * (DEGREE_ROTATE / 360) / ANG_SECONDS
+ANG_VEL_ROTATE = 2 * math.pi * (DEGREE_ROTATE / 360) / ANG_SECONDS #(0.41866667)
 ANG_VEL_CENTER = 2 * math.pi * (DEGREE_TO_CENTER / 360) / ANG_SECONDS
 
 def signal_handler(signum, frame):

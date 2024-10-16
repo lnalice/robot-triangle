@@ -7,7 +7,7 @@ from std_msgs.msg import String
 from collections import deque
 import math
 
-from helper.moveFlow import getMoveFlow
+from helper.moveFlow import getMoveFlow, getLinFlowOfPolygon
 
 class MoveRequest(smach.State):
     def __init__(self, vel:String, goal:String):
@@ -28,15 +28,15 @@ class MoveRequest(smach.State):
         ang_seconds = user_data.ang_seconds
 
         if self.vel == "lin" and self.goal == "polygon": # 다각형 직진
-            move_flow = getMoveFlow(linX, 0, lin_seconds, ['tb3_0', 'tb3_1', 'tb3_2'])
+            move_flow = getLinFlowOfPolygon(['tb3_0', 'tb3_1', 'tb3_2'])
             
         elif self.vel == "ang" and self.goal == "polygon": # 다각형 회전
             move_flow = getMoveFlow(0, rotateAngZ, ang_seconds, ['tb3_0', 'tb3_1', 'tb3_2'])
 
         elif self.vel == "lin" and self.goal == "center":
-            move_flow = getMoveFlow(linX * math.sqrt(3), 0, lin_seconds, ['tb3_0', 'tb3_1', 'tb3_2'])
+            move_flow = getMoveFlow(linX / math.sqrt(3), 0, lin_seconds, ['tb3_0', 'tb3_1', 'tb3_2'])
         
-        elif self.vel == "ang" and self.goal == "center": #*************************
+        elif self.vel == "ang" and self.goal == "center": 
             move_flow = getMoveFlow(0, centerAngZ / 2, ang_seconds, ['tb3_0', 'tb3_1', 'tb3_2'])
 
         user_data.robot_list = []
