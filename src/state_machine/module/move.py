@@ -63,7 +63,7 @@ class OnTheMove(smach_ros.MonitorState):
             rospy.loginfo(f"robot %s arrived", result[0])
             take_cnt[arrived_robot] -= 1
             if take_cnt > 0:
-                goal_data = getSceneDataByRobotID("take_" + take_cnt[arrived_robot], arrived_robot)
+                goal_data = getSceneDataByRobotID("take_" + str(take_cnt[arrived_robot]), arrived_robot)
                 self.move_pub.publish(goal_data)
                 rospy.loginfo("[MoveTogether] I would publish data 'take_%s' for %s", str(take_cnt), arrived_robot)
                 rospy.loginfo("[MoveTogether] data published now: %s", goal_data)
@@ -77,13 +77,13 @@ class OnTheMove(smach_ros.MonitorState):
         return False
 
 class MoveTogetherSM(smach.StateMachine):
-    def __init__(self, vel:String, goal:String):
+    def __init__(self):
         smach.StateMachine.__init__(self, outcomes=["arrive"],
                                     input_keys=['robot_list'],
                                     output_keys=['robot_list'])
         
         with self:
-            self.add('MOVE_REQUEST', MoveRequest(vel, goal),
+            self.add('MOVE_REQUEST', MoveRequest(),
                      transitions={'done': 'ON_THE_MOVE',
                                   'none': "arrive"})
             self.add('ON_THE_MOVE', OnTheMove(),

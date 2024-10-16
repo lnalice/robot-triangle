@@ -1,6 +1,7 @@
 from collections import deque
 import json
 import rospy
+import os
 
 polygon_rel_loc = 'data/polygon.json'
 test_rel_loc = 'data/test_data.json'
@@ -40,7 +41,7 @@ def getLinFlowOfPolygon(robot_list: list) -> deque:
 
     return move_flow
 
-def getSceneDataFlow(take_id: String, robot_id: String) -> deque:
+def getSceneDataFlow(take_id: str) -> deque:
     
     move_flow = deque()
             
@@ -48,9 +49,9 @@ def getSceneDataFlow(take_id: String, robot_id: String) -> deque:
     with open(test_loc) as json_file:
             json_data = json.load(json_file)
 
-            for robot_id in robot_list:
-                robot_goal = json_data[robot_id]
+            for robot_goal in json_data[take_id]:
                 
+                robot_id = robot_goal["id"]
                 sec = robot_goal["seconds"]
                 lin_vel = robot_goal["lin_vel"]
                 ang_vel = robot_goal["ang_vel"]
@@ -62,15 +63,15 @@ def getSceneDataFlow(take_id: String, robot_id: String) -> deque:
 
     return move_flow
 
-def getSceneDataByRobotID(take_id: String, robot_id: String) -> deque:
+def getSceneDataByRobotID(take_id: str, robot_id: str) -> deque:
 
-     task = ""
+    task = ""
     # read json file
     with open(test_loc) as json_file:
             json_data = json.load(json_file)
             
             for robot_goal in json_data[take_id]:
-               if robot_goal["id"] != robot_id:
+                if robot_goal["id"] != robot_id:
                     continue
                
                 sec = robot_goal["seconds"]

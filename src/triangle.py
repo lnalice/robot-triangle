@@ -9,7 +9,7 @@ import math
 # from state_machine.poylgon import PolygonSM
 # from state_machine.toCenter import ToCenterSM
 from state_machine.module.control_module import CtrlModuleSM
-from state_machin.module.move import MoveTogetherSM
+from state_machine.module.move import MoveTogetherSM
 
 def signal_handler(signum, frame):
     res = input("\n[Triangle] Ctrl-c was pressed. Do you want to exit? (y/n) ")
@@ -32,7 +32,7 @@ class Triangle:
             smach.StateMachine.add('CTRL_MODULE', CtrlModuleSM(direction="forward"),
                                    transitions={'complete': 'RANDOM_MOVE'})
             smach.StateMachine.add('RANDOM_MOVE', MoveTogetherSM(),
-                                   transitions={'complete': 'end'}),
+                                   transitions={'arrive': 'end'}),
             
 
 if __name__ == "__main__":
