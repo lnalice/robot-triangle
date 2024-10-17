@@ -23,7 +23,7 @@ class MoveRequest(smach.State):
         move_flow = deque()
         request_robot_list = ['tb3_0', 'tb3_1', 'tb3_2']
 
-        move_flow = getSceneDataFlow("take_1")
+        move_flow = getSceneDataFlow("take_3")
         
         user_data.robot_list = []
 
@@ -31,7 +31,7 @@ class MoveRequest(smach.State):
             return 'none'
         
         while move_flow:
-            rospy.sleep(0.1)
+            rospy.sleep(0.2)
             
             goal_data = move_flow.popleft() 
             
@@ -62,7 +62,7 @@ class OnTheMove(smach_ros.MonitorState):
         if arrived_robot in user_data.robot_list:
             rospy.loginfo(f"robot %s arrived", result[0])
             take_cnt[arrived_robot] -= 1
-            if take_cnt > 0:
+            if take_cnt[arrived_robot] > 0:
                 goal_data = getSceneDataByRobotID("take_" + str(take_cnt[arrived_robot]), arrived_robot)
                 self.move_pub.publish(goal_data)
                 rospy.loginfo("[MoveTogether] I would publish data 'take_%s' for %s", str(take_cnt), arrived_robot)
